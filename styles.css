@@ -56,10 +56,10 @@
 .positioning{position:relative;overflow:hidden;background:var(--ink);color:var(--paper);padding-top:155px;padding-bottom:155px}
 .positioning:before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.28;background:linear-gradient(90deg,transparent 0 34%,rgba(242,240,233,.16) 34.05%,transparent 34.1% 71%,rgba(242,240,233,.12) 71.05%,transparent 71.1%),linear-gradient(rgba(242,240,233,.1) 1px,transparent 1px);background-size:auto,100% 220px}
 .positioning .section-kicker{position:relative;z-index:1;color:var(--lime)}
-.position-grid{position:relative;z-index:1;grid-template-columns:.82fr 1.18fr;gap:8vw;align-items:start}
+.position-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:5vw;align-items:start}
 .positioning h2{font-size:clamp(65px,8.6vw,142px);line-height:.79;letter-spacing:-.1em;margin-top:48px}
 .position-copy{padding-top:32px;position:relative}
-.position-media{height:330px;margin-bottom:42px;border:1px solid rgba(242,240,233,.16);filter:grayscale(.75) contrast(1.05);position:relative}
+.position-media{width:100%;height:clamp(340px,28vw,470px);margin-bottom:42px;border:1px solid rgba(242,240,233,.16);filter:grayscale(.75) contrast(1.05);position:relative}
 .position-media:after{content:'01';position:absolute;right:20px;top:12px;color:rgba(242,240,233,.7);font:clamp(70px,10vw,150px) var(--sans);line-height:1;letter-spacing:-.1em;-webkit-text-stroke:1px rgba(242,240,233,.42);color:transparent}
 .position-copy:before{content:'Strategy\A Design\A Content\A Technology  →';white-space:pre;position:absolute;left:-240px;top:150px;color:#8d8b82;font:italic 19px/1.5 Georgia,serif;transform:rotate(-8deg)}
 .position-copy .lede{font-size:clamp(25px,2.5vw,38px);line-height:1.08;letter-spacing:-.055em;max-width:620px;color:#aaa9a0}
