@@ -13,16 +13,30 @@ document.querySelectorAll('.process-step').forEach((step) => {
   });
 });
 
-document.querySelector('#contact-form')?.addEventListener('submit', (event) => {
+document.querySelector('#contact-form')?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formElement = event.currentTarget;
+  const submitButton = formElement.querySelector('button[type="submit"]');
   const form = new FormData(formElement);
-  const subject = encodeURIComponent(`New Drishtiframe project enquiry — ${form.get('project')}`);
-  const body = encodeURIComponent(`Name: ${form.get('name')}\nEmail: ${form.get('email')}\nProject type: ${form.get('project')}\n\nProject details:\n${form.get('message')}`);
-  const mailto = `mailto:drishtiframe@gmail.com?subject=${subject}&body=${body}`;
-  window.open(mailto, '_blank');
-  formElement.reset();
-  window.alert('Thanks! Your project details are ready to send.');
+  form.append('_subject', `New Drishtiframe project enquiry — ${form.get('project')}`);
+  form.append('_captcha', 'false');
+  submitButton.disabled = true;
+  submitButton.querySelector('span').textContent = '…';
+  try {
+    const response = await fetch('https://formsubmit.co/ajax/drishtiframe@gmail.com', { method: 'POST', body: form, headers: { Accept: 'application/json' } });
+    if (!response.ok) throw new Error('Submission failed');
+    formElement.reset();
+    document.querySelector('#success-modal').hidden = false;
+  } catch (error) {
+    window.alert('We could not send your message right now. Please email drishtiframe@gmail.com directly.');
+  } finally {
+    submitButton.disabled = false;
+    submitButton.querySelector('span').textContent = '↗';
+  }
+});
+
+document.querySelectorAll('.modal-close, .modal-action').forEach((button) => {
+  button.addEventListener('click', () => { document.querySelector('#success-modal').hidden = true; });
 });
 
 const menu = document.querySelector('.menu-toggle');
