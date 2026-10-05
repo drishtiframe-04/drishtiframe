@@ -13,6 +13,14 @@ document.querySelectorAll('.process-step').forEach((step) => {
   });
 });
 
+document.querySelector('#contact-form')?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const form = new FormData(event.currentTarget);
+  const subject = encodeURIComponent(`New Drishtiframe project enquiry — ${form.get('project')}`);
+  const body = encodeURIComponent(`Name: ${form.get('name')}\nEmail: ${form.get('email')}\nProject type: ${form.get('project')}\n\nProject details:\n${form.get('message')}`);
+  window.location.href = `mailto:drishtiframe@gmail.com?subject=${subject}&body=${body}`;
+});
+
 const menu = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 menu?.addEventListener('click', () => {
