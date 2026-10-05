@@ -15,10 +15,14 @@ document.querySelectorAll('.process-step').forEach((step) => {
 
 document.querySelector('#contact-form')?.addEventListener('submit', (event) => {
   event.preventDefault();
-  const form = new FormData(event.currentTarget);
+  const formElement = event.currentTarget;
+  const form = new FormData(formElement);
   const subject = encodeURIComponent(`New Drishtiframe project enquiry — ${form.get('project')}`);
   const body = encodeURIComponent(`Name: ${form.get('name')}\nEmail: ${form.get('email')}\nProject type: ${form.get('project')}\n\nProject details:\n${form.get('message')}`);
-  window.location.href = `mailto:drishtiframe@gmail.com?subject=${subject}&body=${body}`;
+  const mailto = `mailto:drishtiframe@gmail.com?subject=${subject}&body=${body}`;
+  window.open(mailto, '_blank');
+  formElement.reset();
+  window.alert('Thanks! Your project details are ready to send.');
 });
 
 const menu = document.querySelector('.menu-toggle');
