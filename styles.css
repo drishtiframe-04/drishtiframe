@@ -168,3 +168,17 @@
   .positioning .position-media{height:285px}
   .trust-item strong{font-size:46px}
 }
+
+/* Match the reference CTA treatment on mobile. */
+@media(max-width:1000px){
+  .hero-actions{display:grid;grid-template-columns:320px 160px;gap:40px;align-items:center}
+  .hero-actions .button{width:320px;min-width:0;flex:none;white-space:nowrap;justify-content:flex-start;gap:0}
+  .hero-actions .button span{margin-left:auto}
+  .hero-actions .text-link{width:160px;max-width:none;white-space:nowrap;display:flex;gap:17px;justify-content:space-between;line-height:1.1;padding-bottom:10px}
+}
+
+@media(max-width:600px){
+  .hero-actions{grid-template-columns:minmax(0,58vw) minmax(0,34vw);gap:22px}
+  .hero-actions .button{width:100%;padding:21px 20px;font-size:12px}
+  .hero-actions .text-link{width:100%;font-size:11px;gap:8px}
+}
