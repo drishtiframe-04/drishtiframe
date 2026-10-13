@@ -182,3 +182,5 @@
   .hero-actions .button{width:100%;padding:21px 20px;font-size:12px}
   .hero-actions .text-link{width:100%;font-size:11px;gap:8px}
 }
+
+.collage-sheet picture{display:contents}
